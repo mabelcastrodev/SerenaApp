@@ -4,7 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import com.mabel.serenaapp.DashboardActivity
 import com.mabel.serenaapp.screens.categorias.CategoriasActivity
+import com.mabel.serenaapp.screens.diario.DiarioActivity
 import com.mabel.serenaapp.screens.meditaciones.MeditacionesActivity
+import com.mabel.serenaapp.screens.perfil.PerfilActivity
 import com.mabel.serenaapp.ui.components.Seccion
 
 /*
@@ -25,8 +27,8 @@ fun Activity.irASeccion(destino: Seccion, actual: Seccion) {
         Seccion.INICIO -> DashboardActivity::class.java
         Seccion.CATEGORIAS -> CategoriasActivity::class.java
         Seccion.SESIONES -> MeditacionesActivity::class.java
-        // Mi Diario y Perfil se agregan en la siguiente feature
-        Seccion.DIARIO, Seccion.PERFIL -> return
+        Seccion.DIARIO -> DiarioActivity::class.java
+        Seccion.PERFIL -> PerfilActivity::class.java
     }
 
     val intent = Intent(this, pantalla)

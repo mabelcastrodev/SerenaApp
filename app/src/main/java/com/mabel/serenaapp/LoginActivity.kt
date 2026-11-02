@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,20 +21,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,14 +37,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import com.mabel.serenaapp.screens.registro.RegistroActivity
+import com.mabel.serenaapp.ui.components.EstiloBoton
+import com.mabel.serenaapp.ui.components.SerenaBoton
+import com.mabel.serenaapp.ui.components.SerenaInput
+import com.mabel.serenaapp.ui.components.SerenaModal
 import com.mabel.serenaapp.ui.theme.AppAccent
 import com.mabel.serenaapp.ui.theme.AppDark
-import com.mabel.serenaapp.ui.theme.AppDarkSurface
 import com.mabel.serenaapp.ui.theme.AppMuted
-import com.mabel.serenaapp.ui.theme.AppPrimary
 import com.mabel.serenaapp.ui.theme.AppTheme
 import com.mabel.serenaapp.ui.theme.SerenaAppTheme
 
@@ -67,7 +65,14 @@ class LoginActivity : ComponentActivity() {
                         finish()
                     },
                     onIniciarClick = {
-                        startActivity(Intent(this, DashboardActivity::class.java))
+                        // Al entrar se limpia la pila: "atras" en el
+                        // Dashboard sale de la app y no vuelve al Login
+                        val intent = Intent(this, DashboardActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
+                    },
+                    onRegistroClick = {
+                        startActivity(Intent(this, RegistroActivity::class.java))
                     }
                 )
             }//SerenaAppTheme
@@ -79,24 +84,12 @@ class LoginActivity : ComponentActivity() {
 fun LoginScreen(
     onVolverClick: () -> Unit,
     onIniciarClick: () -> Unit,
+    onRegistroClick: () -> Unit
 ) {
-    var usuario by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var verPassword by remember { mutableStateOf(false) }
-
-    val colorCampo = TextFieldDefaults.colors(
-        focusedTextColor = Color.White,
-        unfocusedTextColor = Color.White,
-        focusedContainerColor = AppDarkSurface,
-        unfocusedContainerColor = AppDarkSurface,
-        cursorColor = AppAccent,
-        focusedIndicatorColor = Color.Transparent,
-        unfocusedIndicatorColor = Color.Transparent,
-        focusedPlaceholderColor = AppMuted,
-        unfocusedPlaceholderColor = AppMuted,
-        focusedTrailingIconColor = AppMuted,
-        unfocusedTrailingIconColor = AppMuted
-    )
+    var usuario by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+    var mostrarFaltan by rememberSaveable { mutableStateOf(false) }
+    var mostrarOlvido by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -141,68 +134,47 @@ fun LoginScreen(
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.large))
 
-        TextField(
-            value = usuario,
-            onValueChange = { usuario = it },
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text(stringResource(R.string.login_username)) },
-            singleLine = true,
-            shape = RoundedCornerShape(AppTheme.sizes.buttonCornerRadius),
-            colors = colorCampo
+        // Componente reutilizable (ui/components/SerenaInput.kt)
+        SerenaInput(
+            valor = usuario,
+            onValorCambio = { usuario = it },
+            placeholder = stringResource(R.string.login_username),
+            oscuro = true
         )
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.medium))
 
-        TextField(
-            value = password,
-            onValueChange = { password = it },
-            modifier = Modifier.fillMaxWidth(),
-            placeholder = { Text(stringResource(R.string.login_password)) },
-            singleLine = true,
-            visualTransformation = if (verPassword) {
-                VisualTransformation.None
-            } else {
-                PasswordVisualTransformation()
-            },
-            trailingIcon = {
-                IconButton(onClick = { verPassword = !verPassword }) {
-                    Icon(
-                        painter = painterResource(
-                            if (verPassword) R.drawable.ic_visibility_off else R.drawable.ic_visibility
-                        ),
-                        contentDescription = stringResource(R.string.login_show_password)
-                    )
-                }
-            },
-            shape = RoundedCornerShape(AppTheme.sizes.buttonCornerRadius),
-            colors = colorCampo
+        SerenaInput(
+            valor = password,
+            onValorCambio = { password = it },
+            placeholder = stringResource(R.string.login_password),
+            oscuro = true,
+            esPassword = true
         )
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.regular))
 
-        Button(
-            onClick = onIniciarClick,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(AppTheme.sizes.buttonHeight),
-            shape = RoundedCornerShape(AppTheme.sizes.buttonCornerRadius),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = AppPrimary,
-                contentColor = Color.White
-            )
-        ) {
-            Text(
-                stringResource(R.string.login_button),
-                style = MaterialTheme.typography.labelLarge
-            )
-        }
+        // Componente reutilizable (ui/components/SerenaBoton.kt)
+        SerenaBoton(
+            texto = stringResource(R.string.login_button),
+            onClick = {
+                if (usuario.isBlank() || password.isBlank()) {
+                    mostrarFaltan = true
+                } else {
+                    onIniciarClick()
+                }
+            },
+            estilo = EstiloBoton.AZUL,
+            anchoCompleto = true
+        )
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.large))
 
         Text(
             stringResource(R.string.login_forgot),
             style = MaterialTheme.typography.labelMedium,
-            color = AppAccent
+            color = AppAccent,
+            modifier = Modifier.clickable { mostrarOlvido = true }
         )
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.small))
@@ -220,10 +192,43 @@ fun LoginScreen(
             Text(
                 stringResource(R.string.login_register),
                 style = MaterialTheme.typography.labelMedium,
-                color = AppAccent
+                color = AppAccent,
+                modifier = Modifier.clickable(onClick = onRegistroClick)
             )
         }
 
         Spacer(modifier = Modifier.height(AppTheme.spacing.large))
+    }
+
+    // Componente reutilizable (ui/components/SerenaModal.kt)
+    if (mostrarFaltan) {
+        SerenaModal(
+            titulo = stringResource(R.string.login_faltan_titulo),
+            mensaje = stringResource(R.string.login_faltan_mensaje),
+            textoConfirmar = stringResource(R.string.aceptar),
+            onConfirmar = { mostrarFaltan = false },
+            icono = R.drawable.ic_alerta
+        )
+    }
+    if (mostrarOlvido) {
+        SerenaModal(
+            titulo = stringResource(R.string.login_olvido_titulo),
+            mensaje = stringResource(R.string.login_olvido_mensaje),
+            textoConfirmar = stringResource(R.string.login_register),
+            onConfirmar = {
+                mostrarOlvido = false
+                onRegistroClick()
+            },
+            textoCancelar = stringResource(R.string.cerrar),
+            onCancelar = { mostrarOlvido = false }
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun LoginScreenPreview() {
+    SerenaAppTheme {
+        LoginScreen(onVolverClick = {}, onIniciarClick = {}, onRegistroClick = {})
     }
 }

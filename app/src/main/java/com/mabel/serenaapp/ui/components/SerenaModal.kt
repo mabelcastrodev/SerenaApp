@@ -26,6 +26,8 @@ import com.mabel.serenaapp.ui.theme.SerenaAppTheme
  *
  *  - Con un boton:  solo textoConfirmar / onConfirmar
  *  - Con dos:       se agrega textoCancelar / onCancelar
+ *  - onDescartar:   que pasa al tocar fuera del modal o "atras"
+ *                   (por defecto lo mismo que Cancelar)
  *
  * Los botones del modal son SerenaBoton (componente dentro de
  * otro componente).
@@ -38,10 +40,11 @@ fun SerenaModal(
     onConfirmar: () -> Unit,
     @DrawableRes icono: Int? = null,
     textoCancelar: String? = null,
-    onCancelar: () -> Unit = onConfirmar
+    onCancelar: () -> Unit = onConfirmar,
+    onDescartar: () -> Unit = onCancelar
 ) {
     AlertDialog(
-        onDismissRequest = onCancelar,
+        onDismissRequest = onDescartar,
         icon = if (icono != null) {
             {
                 Icon(
