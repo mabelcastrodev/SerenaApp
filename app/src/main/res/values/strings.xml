@@ -8,14 +8,8 @@
     <string name="autor">Serena</string>
     <string name="derechos">2026 Todos los derechos reservados</string>
 
-    <!-- Títulos de las Activities -->
-    <string name="title_activity_empezar">EmpezarActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="title_activity_sesiones">SesionesActivity</string>
-
     <!-- ====================================================== -->
-    <!-- PANTALLA 1: EmpezarActivity (onboarding)               -->
+    <!-- EmpezarActivity (onboarding)                           -->
     <!-- ====================================================== -->
     <string name="empezar_saltar">Saltar</string>
     <string name="empezar_titulo">Cuida tu mente cada día con Serena</string>
@@ -23,7 +17,7 @@
     <string name="empezar_boton">Comenzar</string>
 
     <!-- ====================================================== -->
-    <!-- PANTALLA 2: LoginActivity                              -->
+    <!-- LoginActivity                                          -->
     <!-- ====================================================== -->
     <string name="login_back">Volver</string>
     <string name="login_title">Inicia sesión para continuar en Serena</string>
@@ -34,31 +28,153 @@
     <string name="login_forgot">¿Olvidaste tu contraseña?</string>
     <string name="login_no_account">¿No tienes cuenta?</string>
     <string name="login_register">Regístrate ahora</string>
+    <string name="login_faltan_titulo">Faltan datos</string>
+    <string name="login_faltan_mensaje">Escribe tu usuario y tu contraseña para continuar.</string>
+    <string name="login_olvido_titulo">Recupera tu cuenta</string>
+    <string name="login_olvido_mensaje">Pronto podrás recuperar tu contraseña desde aquí. Por ahora, crea una cuenta nueva desde \"Regístrate ahora\".</string>
 
     <!-- ====================================================== -->
-    <!-- PANTALLA 3: DashboardActivity (Home)                   -->
+    <!-- RegistroActivity                                       -->
+    <!-- ====================================================== -->
+    <string name="registro_titulo">Crea tu cuenta</string>
+    <string name="registro_subtitulo">Solo te tomará un minuto empezar a cuidar tu calma.</string>
+    <string name="registro_nombre">Nombre completo</string>
+    <string name="registro_correo">Correo electrónico</string>
+    <string name="registro_password">Contraseña (mínimo 6 caracteres)</string>
+    <string name="registro_confirmar">Confirma tu contraseña</string>
+    <string name="registro_boton">Crear cuenta</string>
+    <string name="registro_ya_tengo">¿Ya tienes cuenta?</string>
+    <string name="registro_ok_titulo">¡Cuenta creada!</string>
+    <string name="registro_ok_mensaje">Te damos la bienvenida a Serena, %1$s. Ya puedes iniciar sesión.</string>
+    <string name="registro_ok_boton">Ir al login</string>
+
+    <!-- Errores de validacion (SerenaInput) -->
+    <string name="error_nombre">Escribe tu nombre</string>
+    <string name="error_correo">Escribe un correo válido (ejemplo@correo.com)</string>
+    <string name="error_password">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="error_confirmar">Las contraseñas no coinciden</string>
+
+    <!-- ====================================================== -->
+    <!-- DashboardActivity (Home)                               -->
     <!-- ====================================================== -->
     <string name="dashboard_hero_title">Paz en tu día</string>
     <string name="dashboard_hero_subtitle">Aprende a meditar en solo 5 minutos.</string>
     <string name="dashboard_hero_action">Iniciar ahora</string>
-
-
     <string name="dashboard_banner_title">Elementos relajantes</string>
-    <string name="dashboard_banner_desc">Más de 200 sonidos de la naturaleza para ayudarte a dormir y concentrarte.</string>
-    <string name="dashboard_banner_action">Ver sonidos</string>
+    <string name="dashboard_banner_desc">Sonidos de la naturaleza para ayudarte a dormir y concentrarte.</string>
+    <string name="dashboard_banner_action">Ver sesiones</string>
+    <string name="dashboard_categorias_title">Explora por categoría</string>
+    <string name="dashboard_ver_todas">Ver todas</string>
+    <string name="dashboard_diario_titulo">Mi diario</string>
+    <string name="dashboard_diario_desc">¿Cómo te sientes hoy? Escríbelo en un minuto.</string>
+    <string name="dashboard_diario_accion">Escribir</string>
 
-    <!-- Datos que vienen de la base de datos -->
-    <string name="dashboard_categorias_title">Explora por categoria</string>
-    <!-- Pantalla del servicio web -->
-    <string name="sesiones_titulo">Sesiones</string>
-    <string name="sesiones_subtitulo">Todas las practicas de Serena</string>
-    <string name="sesiones_autor">Por %1$s</string>
-
-    <string name="dashboard_sin_conexion">Sin conexion con el servidor. Mostrando datos de ejemplo.</string>
-    <string name="dashboard_sin_datos">Todavia no hay sesiones registradas</string>
-    <string name="meditacion_duracion">%1$d min</string>
+    <!-- ====================================================== -->
+    <!-- CategoriasActivity                                     -->
+    <!-- ====================================================== -->
+    <string name="categorias_titulo">Categorías</string>
+    <string name="categorias_subtitulo">Elige cómo quieres sentirte hoy</string>
+    <string name="categorias_sin_datos">Todavía no hay categorías registradas</string>
+    <string name="categorias_todas_titulo">¿No sabes por dónde empezar?</string>
+    <string name="categorias_todas_desc">Mira todas las sesiones juntas, las destacadas aparecen primero.</string>
+    <string name="categorias_todas_boton">Ver todas las sesiones</string>
     <string name="categoria_sesiones">%1$d sesiones</string>
 
+    <!-- ====================================================== -->
+    <!-- MeditacionesActivity (Sesiones)                        -->
+    <!-- ====================================================== -->
+    <string name="sesiones_titulo">Sesiones</string>
+    <string name="sesiones_subtitulo">Todas las prácticas de Serena</string>
+    <string name="sesiones_subtitulo_categoria">Sesiones de esta categoría</string>
+    <string name="sesiones_autor">Por %1$s</string>
+    <string name="sesiones_buscar">Buscar por título o autor</string>
+    <string name="sesiones_destacada">Destacada</string>
+    <string name="sesiones_escuchar">Escuchar ahora</string>
+    <string name="sesiones_resultados">%1$d resultados</string>
+    <string name="sesiones_sin_datos">Todavía no hay sesiones registradas</string>
+    <string name="sesiones_sin_resultados">No encontramos sesiones con \"%1$s\"</string>
+    <string name="sesiones_limpiar">Limpiar búsqueda</string>
+    <string name="meditacion_duracion">%1$d min</string>
+
+    <!-- ====================================================== -->
+    <!-- MeditacionDetalleActivity                              -->
+    <!-- ====================================================== -->
+    <string name="detalle_titulo">Detalle de la sesión</string>
+    <string name="detalle_duracion">Duración</string>
+    <string name="detalle_nivel">Nivel</string>
+    <string name="detalle_instructor">Instructor</string>
+    <string name="detalle_acerca">Acerca de esta sesión</string>
+    <string name="detalle_comenzar">Comenzar sesión</string>
+    <string name="detalle_mas_categoria">Más de %1$s</string>
+    <string name="detalle_modal_titulo">Todo listo</string>
+    <string name="detalle_modal_mensaje">Busca un lugar cómodo, ponte audífonos y respira hondo. \"%1$s\" dura %2$d minutos.</string>
+    <string name="detalle_modal_boton">Empezar</string>
+    <string name="detalle_no_encontrada">No encontramos esta sesión.</string>
+
+    <!-- ====================================================== -->
+    <!-- PerfilActivity                                         -->
+    <!-- ====================================================== -->
+    <string name="perfil_titulo">Mi perfil</string>
+    <string name="perfil_subtitulo">Tus datos y tu avance</string>
+    <string name="perfil_nombre_defecto">Visitante</string>
+    <string name="perfil_correo_defecto">Sin correo registrado</string>
+    <string name="perfil_stat_entradas">Entradas</string>
+    <string name="perfil_stat_dias">Días</string>
+    <string name="perfil_stat_animo">Último ánimo</string>
+    <string name="perfil_editar">Editar mis datos</string>
+    <string name="perfil_guardar">Guardar cambios</string>
+    <string name="perfil_guardado_titulo">Datos guardados</string>
+    <string name="perfil_guardado_mensaje">Tu nombre y tu correo se actualizaron.</string>
+    <string name="perfil_cerrar_sesion">Cerrar sesión</string>
+    <string name="perfil_salir_titulo">¿Cerrar sesión?</string>
+    <string name="perfil_salir_mensaje">Volverás a la pantalla de inicio. Tus entradas del diario se quedan guardadas.</string>
+    <string name="perfil_salir_si">Sí, salir</string>
+
+    <!-- ====================================================== -->
+    <!-- DiarioActivity                                         -->
+    <!-- ====================================================== -->
+    <string name="diario_titulo">Mi diario</string>
+    <string name="diario_subtitulo">Un minuto para ti</string>
+    <string name="diario_pregunta">¿Cómo te sientes hoy?</string>
+    <string name="diario_placeholder">Escribe lo que pasó hoy, lo que te preocupa o lo que agradeces…</string>
+    <string name="diario_guardar">Guardar entrada</string>
+    <string name="diario_mis_entradas">Mis entradas</string>
+    <string name="diario_vacio">Todavía no escribes nada. Tu primera entrada aparecerá aquí.</string>
+    <string name="diario_falta_titulo">Falta algo</string>
+    <string name="diario_falta_mensaje">Elige cómo te sientes y escribe al menos una línea.</string>
+    <string name="diario_guardada_titulo">Entrada guardada</string>
+    <string name="diario_guardada_mensaje">Gracias por darte este momento.</string>
+    <string name="diario_eliminar">Eliminar</string>
+    <string name="animo_feliz">Feliz</string>
+    <string name="animo_calma">En calma</string>
+    <string name="animo_normal">Normal</string>
+    <string name="animo_triste">Triste</string>
+    <string name="animo_estres">Con estrés</string>
+
+    <!-- ====================================================== -->
+    <!-- Componentes reutilizables                              -->
+    <!-- ====================================================== -->
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="reintentar">Reintentar</string>
+    <string name="error_titulo">No pudimos conectarnos</string>
+    <string name="error_mensaje">Revisa tu conexión a internet y vuelve a intentarlo.</string>
+
+    <!-- Menu inferior (SerenaBarraNavegacion) -->
+    <string name="nav_inicio">INICIO</string>
+    <string name="nav_categorias">CATEGORÍAS</string>
+    <string name="nav_sesiones">SESIONES</string>
+    <string name="nav_diario">DIARIO</string>
+    <string name="nav_perfil">PERFIL</string>
+
+    <!-- Textos de la version PA1 (se retiran al pasar a MVVM) -->
+    <string name="title_activity_empezar">EmpezarActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_sesiones">SesionesActivity</string>
+    <string name="dashboard_sin_conexion">Sin conexion con el servidor. Mostrando datos de ejemplo.</string>
+    <string name="dashboard_sin_datos">Todavia no hay sesiones registradas</string>
     <string name="bottom_nav_home">INICIO</string>
     <string name="bottom_nav_pages">PÁGINAS</string>
     <string name="bottom_nav_elements">ELEMENTOS</string>
