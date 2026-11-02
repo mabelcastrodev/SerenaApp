@@ -33,6 +33,10 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".screens.registro.RegistroActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".DashboardActivity"
             android:exported="false" />
         <activity
@@ -45,6 +49,14 @@
         <activity
             android:name=".screens.meditaciones.MeditacionDetalleActivity"
             android:exported="false" />
+        <activity
+            android:name=".screens.diario.DiarioActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.perfil.PerfilActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

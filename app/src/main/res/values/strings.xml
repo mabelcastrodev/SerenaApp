@@ -109,7 +109,6 @@
     <string name="detalle_modal_titulo">Todo listo</string>
     <string name="detalle_modal_mensaje">Busca un lugar cómodo, ponte audífonos y respira hondo. \"%1$s\" dura %2$d minutos.</string>
     <string name="detalle_modal_boton">Empezar</string>
-    <string name="detalle_no_encontrada">No encontramos esta sesión.</string>
 
     <!-- ====================================================== -->
     <!-- PerfilActivity                                         -->

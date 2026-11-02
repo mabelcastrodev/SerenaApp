@@ -13,12 +13,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -48,6 +50,7 @@ import com.mabel.serenaapp.screens.categorias.CategoriasViewModel
 import com.mabel.serenaapp.screens.meditaciones.EXTRA_IDCATEGORIA
 import com.mabel.serenaapp.screens.meditaciones.EXTRA_NOMBRE_CATEGORIA
 import com.mabel.serenaapp.screens.meditaciones.MeditacionesActivity
+import com.mabel.serenaapp.ui.components.EstiloBoton
 import com.mabel.serenaapp.ui.components.Seccion
 import com.mabel.serenaapp.ui.components.SerenaBarraNavegacion
 import com.mabel.serenaapp.ui.components.SerenaBoton
@@ -162,6 +165,12 @@ fun DashboardScreen(
                     }
                 }
 
+                item {
+                    TarjetaDiario(
+                        onClick = { onNavegar(Seccion.DIARIO) },
+                        modifier = Modifier.padding(horizontal = AppTheme.spacing.regular)
+                    )
+                }
 
                 item {
                     TarjetaSonidos(
@@ -294,6 +303,53 @@ private fun CirculoCategoria(
     }
 }
 
+// Acceso rapido a Mi Diario (SerenaCard que se puede tocar)
+@Composable
+private fun TarjetaDiario(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    SerenaCard(
+        modifier = modifier.fillMaxWidth(),
+        onClick = onClick
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(AppTheme.sizes.iconContainerMedium)
+                    .background(MaterialTheme.colorScheme.surfaceVariant, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_edit),
+                    contentDescription = null,
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(AppTheme.sizes.iconRegular)
+                )
+            }
+            Spacer(modifier = Modifier.width(AppTheme.spacing.medium))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    stringResource(R.string.dashboard_diario_titulo),
+                    style = MaterialTheme.typography.titleSmall,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                Text(
+                    stringResource(R.string.dashboard_diario_desc),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            Spacer(modifier = Modifier.width(AppTheme.spacing.small))
+            SerenaBoton(
+                texto = stringResource(R.string.dashboard_diario_accion),
+                onClick = onClick,
+                estilo = EstiloBoton.AZUL,
+                pequeno = true
+            )
+        }
+    }
+}
 
 // Tarjeta oscura con imagen, tal como esta en la plantilla
 @Composable
