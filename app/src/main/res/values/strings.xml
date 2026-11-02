@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Serena</string>
+    <string name="app_name_upper">SERENA</string>
+    <string name="logo">Logotipo de la aplicación Serena</string>
+    <string name="menu">Menú</string>
+    <string name="empezar">Empezar</string>
+    <string name="frase">La calma empieza con una respiración</string>
+    <string name="autor">Serena</string>
+    <string name="derechos">2026 Todos los derechos reservados</string>
+
+    <!-- Títulos de las Activities -->
+    <string name="title_activity_empezar">EmpezarActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_activity_sesiones">SesionesActivity</string>
+
+    <!-- ====================================================== -->
+    <!-- PANTALLA 1: EmpezarActivity (onboarding)               -->
+    <!-- ====================================================== -->
+    <string name="empezar_saltar">Saltar</string>
+    <string name="empezar_titulo">Cuida tu mente cada día con Serena</string>
+    <string name="empezar_contenido">Serena es tu espacio moderno y seguro para meditar, respirar y encontrar tu paz interior.</string>
+    <string name="empezar_boton">Comenzar</string>
+
+    <!-- ====================================================== -->
+    <!-- PANTALLA 2: LoginActivity                              -->
+    <!-- ====================================================== -->
+    <string name="login_back">Volver</string>
+    <string name="login_title">Inicia sesión para continuar en Serena</string>
+    <string name="login_username">Usuario</string>
+    <string name="login_password">Ingresa tu contraseña</string>
+    <string name="login_show_password">Mostrar u ocultar contraseña</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="login_forgot">¿Olvidaste tu contraseña?</string>
+    <string name="login_no_account">¿No tienes cuenta?</string>
+    <string name="login_register">Regístrate ahora</string>
+
+    <!-- ====================================================== -->
+    <!-- PANTALLA 3: DashboardActivity (Home)                   -->
+    <!-- ====================================================== -->
+    <string name="dashboard_hero_title">Paz en tu día</string>
+    <string name="dashboard_hero_subtitle">Aprende a meditar en solo 5 minutos.</string>
+    <string name="dashboard_hero_action">Iniciar ahora</string>
+
+
+    <string name="dashboard_banner_title">Elementos relajantes</string>
+    <string name="dashboard_banner_desc">Más de 200 sonidos de la naturaleza para ayudarte a dormir y concentrarte.</string>
+    <string name="dashboard_banner_action">Ver sonidos</string>
+
+    <!-- Datos que vienen de la base de datos -->
+    <string name="dashboard_categorias_title">Explora por categoria</string>
+    <!-- Pantalla del servicio web -->
+    <string name="sesiones_titulo">Sesiones</string>
+    <string name="sesiones_subtitulo">Todas las practicas de Serena</string>
+    <string name="sesiones_autor">Por %1$s</string>
+
+    <string name="dashboard_sin_conexion">Sin conexion con el servidor. Mostrando datos de ejemplo.</string>
+    <string name="dashboard_sin_datos">Todavia no hay sesiones registradas</string>
+    <string name="meditacion_duracion">%1$d min</string>
+    <string name="categoria_sesiones">%1$d sesiones</string>
+
+    <string name="bottom_nav_home">INICIO</string>
+    <string name="bottom_nav_pages">PÁGINAS</string>
+    <string name="bottom_nav_elements">ELEMENTOS</string>
+    <string name="bottom_nav_chat">CHAT</string>
+    <string name="bottom_nav_settings">AJUSTES</string>
+</resources>

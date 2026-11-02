@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Version oscura del tema: se usa sola cuando el celular
+         esta en modo oscuro. Asi el fondo de la ventana y la
+         pantalla de inicio tambien salen oscuros. -->
+    <style name="Theme.SerenaApp" parent="android:Theme.Material.NoActionBar" />
+</resources>

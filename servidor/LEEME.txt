@@ -1,0 +1,99 @@
+======================================================
+ SERENA - BASE DE DATOS Y SERVICIOS
+======================================================
+
+Esta carpeta NO es parte de la app Android. Son los
+archivos que van en un servidor web, igual que los que
+usa Loki en servicios.campus.pe
+
+Archivos:
+  serena.sql        -> crea las tablas y carga los datos
+  conexion.php      -> datos de acceso a MySQL
+  categorias.php    -> servicio que devuelve las categorias
+  meditaciones.php  -> servicio que devuelve las sesiones
+
+
+------------------------------------------------------
+ PASO 1: conseguir un hosting gratis con PHP y MySQL
+------------------------------------------------------
+Sirve cualquiera que tenga PHP, MySQL y phpMyAdmin.
+Uno conocido es InfinityFree (www.infinityfree.com).
+Tambien sirve el hosting del instituto si el profesor
+les da uno, o XAMPP en tu propia computadora.
+
+Crea una cuenta y anota estos datos que te va a dar:
+  - la direccion de tu sitio  (ejemplo: serena.infinityfreeapp.com)
+  - el nombre de la base de datos
+  - el usuario y la clave de MySQL
+
+
+------------------------------------------------------
+ PASO 2: crear la base de datos
+------------------------------------------------------
+1. Entra al panel del hosting y crea una base de datos.
+2. Abre phpMyAdmin y selecciona esa base.
+3. Ve a la pestana "Importar" y sube serena.sql
+4. Deberian aparecer las tablas categorias y meditaciones
+   con 6 y 14 registros.
+
+
+------------------------------------------------------
+ PASO 3: subir los archivos PHP
+------------------------------------------------------
+1. Abre conexion.php y cambia estas cuatro lineas por
+   los datos que te dio el hosting:
+
+       $servidor  = "localhost";
+       $basedatos = "serena";
+       $usuario   = "root";
+       $clave     = "";
+
+2. Sube conexion.php, categorias.php y meditaciones.php
+   a la carpeta publica del hosting (normalmente se llama
+   htdocs o public_html).
+
+
+------------------------------------------------------
+ PASO 4: probar que funciona
+------------------------------------------------------
+Abre en el navegador:
+
+   https://TU-SITIO/categorias.php
+
+Tiene que salir algo asi:
+
+   [{"idcategoria":1,"nombre":"Ansiedad", ... }]
+
+Si sale texto en JSON, el servicio ya esta listo.
+Si sale un error, casi siempre es que los datos de
+conexion.php estan mal escritos.
+
+
+------------------------------------------------------
+ PASO 5: conectar la app
+------------------------------------------------------
+En Android Studio abre:
+
+   app/src/main/java/com/mabel/serenaapp/DashboardActivity.kt
+
+y cambia esta linea por la direccion de tu sitio
+(tiene que terminar con barra /):
+
+   const val BASE_URL = "https://TU-SITIO/"
+
+Vuelve a correr la app. El Dashboard va a mostrar las
+categorias y las sesiones que estan en tu base de datos.
+
+
+------------------------------------------------------
+ MIENTRAS TANTO
+------------------------------------------------------
+Si todavia no tienes hosting y quieres ver el diseno con
+datos, en ese mismo archivo cambia:
+
+   const val USAR_DATOS_DE_PRUEBA = false
+
+por true. Eso usa una lista que esta dentro de la app
+que esta en ese mismo archivo con los mismos registros del SQL.
+Acuerdate de volver a ponerlo en false cuando conectes
+tu base de datos de verdad.
