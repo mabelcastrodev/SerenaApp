@@ -168,16 +168,4 @@
     <string name="nav_diario">DIARIO</string>
     <string name="nav_perfil">PERFIL</string>
 
-    <!-- Textos de la version PA1 (se retiran al pasar a MVVM) -->
-    <string name="title_activity_empezar">EmpezarActivity</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
-    <string name="title_activity_sesiones">SesionesActivity</string>
-    <string name="dashboard_sin_conexion">Sin conexion con el servidor. Mostrando datos de ejemplo.</string>
-    <string name="dashboard_sin_datos">Todavia no hay sesiones registradas</string>
-    <string name="bottom_nav_home">INICIO</string>
-    <string name="bottom_nav_pages">PÁGINAS</string>
-    <string name="bottom_nav_elements">ELEMENTOS</string>
-    <string name="bottom_nav_chat">CHAT</string>
-    <string name="bottom_nav_settings">AJUSTES</string>
 </resources>

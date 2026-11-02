@@ -22,6 +22,7 @@ CREATE TABLE categorias (
     idcategoria   INT AUTO_INCREMENT PRIMARY KEY,
     nombre        VARCHAR(60)  NOT NULL,
     descripcion   VARCHAR(200) NOT NULL,
+    imagen        VARCHAR(200) NOT NULL DEFAULT '',
     habilitado    TINYINT(1)   NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -48,6 +49,7 @@ CREATE TABLE meditaciones (
     nivel         VARCHAR(20)  NOT NULL,
     autor         VARCHAR(60)  NOT NULL,
     destacado     TINYINT(1)   NOT NULL DEFAULT 0,
+    imagen        VARCHAR(200) NOT NULL DEFAULT '',
     habilitado    TINYINT(1)   NOT NULL DEFAULT 1,
     CONSTRAINT fk_meditacion_categoria
         FOREIGN KEY (idcategoria) REFERENCES categorias (idcategoria)
@@ -67,4 +69,28 @@ INSERT INTO meditaciones (idcategoria, titulo, descripcion, duracion, nivel, aut
 (5, 'Enfoque profundo',           'Ruido blanco suave para bloques largos de estudio',        60, 'Intermedio',   'Serena', 0),
 (5, 'Volver a la tarea',          'Microsesión para retomar cuando te distraes',              2,  'Principiante', 'Serena', 0),
 (6, 'Tres cosas buenas',          'Reconoce tres momentos del día que valieron la pena',      5,  'Principiante', 'Lucía Fernández', 0),
-(6, 'Gracias a mi cuerpo',        'Una práctica de gratitud hacia ti misma',                  9,  'Intermedio',   'Serena', 0);
+(6, 'Gracias a mi cuerpo',        'Una práctica de gratitud hacia ti misma',                  9,  'Intermedio',   'Serena', 0),
+(1, 'Pausa de tres respiraciones', 'Un freno corto para cuando sientes que todo va muy rápido', 3,  'Principiante', 'Valeria Quispe', 0),
+(1, 'Anclarte al presente',       'Usa los cinco sentidos para volver al aquí y ahora',       10, 'Intermedio',   'Diego Ramos', 0),
+(1, 'Cuerpo en calma',            'Recorre tu cuerpo y suelta la tensión de hombros y mandíbula', 15, 'Intermedio', 'Lucía Fernández', 0),
+(2, 'Olas del mar',               'Sonido de olas suaves para desconectarte antes de dormir', 30, 'Principiante', 'Serena', 0),
+(2, 'Contar hacia atrás',         'Cuenta despacio desde cien mientras tu respiración baja',  12, 'Principiante', 'Andrés Salazar', 0),
+(2, 'Historia para dormir',       'Un relato tranquilo narrado en voz baja',                  25, 'Principiante', 'Camila Rojas', 0),
+(3, 'Lo mejor de mi día',         'Escribe un momento bueno, por pequeño que sea',            5,  'Principiante', 'Serena', 1),
+(3, 'Nombrar lo que siento',      'Ponle nombre a tus emociones para entenderlas mejor',      8,  'Intermedio',   'Valeria Quispe', 0),
+(3, 'Metas de la semana',         'Escribe tres metas pequeñas y realistas',                  10, 'Principiante', 'Andrés Salazar', 0),
+(4, 'Respiración del globo',      'Imagina que tu abdomen se infla y se desinfla',            4,  'Principiante', 'Camila Rojas', 0),
+(4, 'Respiración alterna',        'Alterna las fosas nasales para equilibrar tu energía',     6,  'Intermedio',   'Diego Ramos', 0),
+(4, 'Exhalación larga',           'Exhala el doble de lo que inhalas para relajarte',         5,  'Avanzado',     'Serena', 0),
+(5, 'Pomodoro consciente',        'Veinticinco minutos de enfoque con pausas guiadas',        25, 'Intermedio',   'Andrés Salazar', 1),
+(5, 'Lluvia para estudiar',       'Lluvia constante que tapa el ruido de la casa',            45, 'Principiante', 'Serena', 0),
+(5, 'Una sola tarea',             'Entrena tu mente para hacer una cosa a la vez',            12, 'Avanzado',     'Valeria Quispe', 0),
+(6, 'Carta de gracias',           'Escribe en tu mente una carta a alguien importante',       10, 'Intermedio',   'Camila Rojas', 1),
+(6, 'Gratitud al despertar',      'Empieza la mañana reconociendo algo bueno',                4,  'Principiante', 'Serena', 0),
+(6, 'Lo que sí tengo',            'Cambia la mirada de lo que falta a lo que ya está',        7,  'Principiante', 'Lucía Fernández', 0),
+(6, 'Gratitud antes de dormir',   'Cierra el día con tres agradecimientos',                   6,  'Principiante', 'Diego Ramos', 0);
+
+-- Ruta de la imagen de cada fila (los archivos van en
+-- www/serena/imagenes/ del hosting)
+UPDATE categorias   SET imagen = CONCAT('imagenes/categorias/c',   idcategoria,  '.jpg');
+UPDATE meditaciones SET imagen = CONCAT('imagenes/meditaciones/m', idmeditacion, '.jpg');
