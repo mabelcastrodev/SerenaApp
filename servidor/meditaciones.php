@@ -3,16 +3,17 @@
  * SERVICIO: meditaciones.php
  * Devuelve las sesiones de Serena junto al nombre de su categoría.
  *
- * Se puede filtrar por categoría:
- *   meditaciones.php                -> todas
- *   meditaciones.php?idcategoria=2  -> solo las de Dormir
+ *   meditaciones.php                 -> todas
+ *   meditaciones.php?idcategoria=2   -> solo las de Dormir (Sesiones por categoría)
+ *   meditaciones.php?idmeditacion=5  -> solo una (pantalla Detalle)
  */
 
 require_once "conexion.php";
 
 $conexion = conectar();
 
-$idcategoria = isset($_GET["idcategoria"]) ? (int) $_GET["idcategoria"] : 0;
+$idcategoria  = isset($_GET["idcategoria"])  ? (int) $_GET["idcategoria"]  : 0;
+$idmeditacion = isset($_GET["idmeditacion"]) ? (int) $_GET["idmeditacion"] : 0;
 
 $sql = "SELECT m.idmeditacion,
                m.idcategoria,
@@ -22,7 +23,8 @@ $sql = "SELECT m.idmeditacion,
                m.duracion,
                m.nivel,
                m.autor,
-               m.destacado
+               m.destacado,
+               m.imagen
         FROM meditaciones m
         INNER JOIN categorias c
                 ON c.idcategoria = m.idcategoria
@@ -31,6 +33,9 @@ $sql = "SELECT m.idmeditacion,
 if ($idcategoria > 0) {
     $sql .= " AND m.idcategoria = :idcategoria";
 }
+if ($idmeditacion > 0) {
+    $sql .= " AND m.idmeditacion = :idmeditacion";
+}
 
 $sql .= " ORDER BY m.destacado DESC, m.idmeditacion";
 
@@ -38,6 +43,9 @@ $consulta = $conexion->prepare($sql);
 
 if ($idcategoria > 0) {
     $consulta->bindParam(":idcategoria", $idcategoria, PDO::PARAM_INT);
+}
+if ($idmeditacion > 0) {
+    $consulta->bindParam(":idmeditacion", $idmeditacion, PDO::PARAM_INT);
 }
 
 $consulta->execute();
