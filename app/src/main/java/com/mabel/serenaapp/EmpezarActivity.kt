@@ -22,9 +22,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -35,9 +32,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.mabel.serenaapp.ui.theme.AppAccent
-import com.mabel.serenaapp.ui.theme.AppForeground
+import com.mabel.serenaapp.ui.components.SerenaBoton
 import com.mabel.serenaapp.ui.theme.AppPrimary
 import com.mabel.serenaapp.ui.theme.AppPrimaryLight
 import com.mabel.serenaapp.ui.theme.AppTheme
@@ -159,24 +156,22 @@ fun EmpezarScreen(
             )
             Spacer(modifier = Modifier.height(AppTheme.spacing.large))
 
-            Button(
+            // Componente reutilizable (ui/components/SerenaBoton.kt)
+            SerenaBoton(
+                texto = stringResource(R.string.empezar_boton),
                 onClick = onComenzarClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(AppTheme.sizes.buttonHeight),
-                shape = RoundedCornerShape(AppTheme.sizes.buttonCornerRadius),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = AppAccent,
-                    contentColor = AppForeground
-                )
-            ) {
-                Text(
-                    stringResource(R.string.empezar_boton),
-                    style = MaterialTheme.typography.labelLarge
-                )
-            }
+                anchoCompleto = true
+            )
 
             Spacer(modifier = Modifier.height(AppTheme.spacing.large))
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun EmpezarScreenPreview() {
+    SerenaAppTheme {
+        EmpezarScreen(onSaltarClick = {}, onComenzarClick = {})
     }
 }

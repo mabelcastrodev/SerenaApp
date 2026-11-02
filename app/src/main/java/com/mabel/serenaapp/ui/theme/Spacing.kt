@@ -65,7 +65,26 @@ data class AppComponentSizes(
     val dotGap: Dp = 6.dp,
     val ringSize: Dp = 100.dp,
     val ringStroke: Dp = 20.dp,
-    val bigCircleSize: Dp = 320.dp
+    val bigCircleSize: Dp = 320.dp,
+
+    // ---- PA3: medidas de los componentes reutilizables ----
+
+    // Bordes (SerenaBoton contorno y SerenaCard seleccionada)
+    val borderWidth: Dp = 1.dp,
+    val selectedBorder: Dp = 2.dp,
+
+    // Imagenes remotas
+    val cardImageHeight: Dp = 140.dp,
+    val thumbnailSize: Dp = 88.dp,
+    val detailImageHeight: Dp = 260.dp,
+    val featuredImageHeight: Dp = 180.dp,
+
+    // Perfil y Diario
+    val avatarSize: Dp = 72.dp,
+    val moodSize: Dp = 56.dp,
+
+    // Icono grande de los modales
+    val modalIconSize: Dp = 40.dp
 )
 
 val LocalAppSpacing = staticCompositionLocalOf { AppSpacing() }

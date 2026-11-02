@@ -16,9 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.systemBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,8 +25,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import com.mabel.serenaapp.ui.theme.AppAccent
-import com.mabel.serenaapp.ui.theme.AppForeground
+import androidx.compose.ui.tooling.preview.Preview
+import com.mabel.serenaapp.ui.components.SerenaBoton
 import com.mabel.serenaapp.ui.theme.AppPrimary
 import com.mabel.serenaapp.ui.theme.AppTheme
 import com.mabel.serenaapp.ui.theme.SerenaAppTheme
@@ -100,20 +97,11 @@ fun MainScreen(
             color = Color.White
         )
         Spacer(modifier = Modifier.height(AppTheme.spacing.large))
-        Button(
-            onClick = onStartClick,
-            modifier = Modifier.height(AppTheme.sizes.buttonHeight),
-            shape = RoundedCornerShape(AppTheme.sizes.buttonCornerRadius),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = AppAccent,
-                contentColor = AppForeground
-            )
-        ) {
-            Text(
-                stringResource(R.string.empezar),
-                style = MaterialTheme.typography.labelLarge
-            )
-        }
+        // Componente reutilizable (ui/components/SerenaBoton.kt)
+        SerenaBoton(
+            texto = stringResource(R.string.empezar),
+            onClick = onStartClick
+        )
     }
 
     // Abajo: derechos
@@ -130,5 +118,13 @@ fun MainScreen(
             style = MaterialTheme.typography.bodySmall,
             color = Color.White
         )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFF0D5AFD)
+@Composable
+private fun MainScreenPreview() {
+    SerenaAppTheme {
+        MainScreen(onStartClick = {})
     }
 }

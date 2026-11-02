@@ -53,6 +53,14 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     // Conexion con la base de datos (igual que ProyectoLoki)
-    implementation("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
+    // MVVM: ViewModel y collectAsStateWithLifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    // Imagenes remotas desde AlwaysData (SerenaImagenRemota)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }
