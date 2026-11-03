@@ -6,8 +6,6 @@ import retrofit2.http.Query
 
 interface MeditacionesService {
 
-    // meditaciones.php?idcategoria=2  (si es null Retrofit no lo manda
-    // y el PHP devuelve todas)
     @GET("meditaciones.php")
     suspend fun getMeditaciones(
         @Query("idcategoria") idcategoria: Int?

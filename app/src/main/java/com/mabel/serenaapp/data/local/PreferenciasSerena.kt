@@ -4,14 +4,6 @@ import android.content.Context
 import com.google.gson.Gson
 import com.mabel.serenaapp.models.EntradaDiario
 
-/*
- * DATOS LOCALES (en el celular)
- *
- * Guarda con SharedPreferences lo que no esta en el servidor:
- * el nombre y correo del registro, y las entradas de Mi Diario.
- * Las entradas se guardan como texto JSON usando Gson (la misma
- * libreria que usa Retrofit). La contrasena NO se guarda.
- */
 class PreferenciasSerena(context: Context) {
 
     private val prefs = context.applicationContext

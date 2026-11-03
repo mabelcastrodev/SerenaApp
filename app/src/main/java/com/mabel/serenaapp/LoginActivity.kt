@@ -53,7 +53,7 @@ import com.mabel.serenaapp.ui.theme.SerenaAppTheme
 class LoginActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Fondo oscuro: íconos de la barra de estado en blanco
+
         enableEdgeToEdge(
             statusBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT),
             navigationBarStyle = SystemBarStyle.dark(android.graphics.Color.TRANSPARENT)
@@ -65,8 +65,7 @@ class LoginActivity : ComponentActivity() {
                         finish()
                     },
                     onIniciarClick = {
-                        // Al entrar se limpia la pila: "atras" en el
-                        // Dashboard sale de la app y no vuelve al Login
+
                         val intent = Intent(this, DashboardActivity::class.java)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                         startActivity(intent)
@@ -75,7 +74,7 @@ class LoginActivity : ComponentActivity() {
                         startActivity(Intent(this, RegistroActivity::class.java))
                     }
                 )
-            }//SerenaAppTheme
+            }
         }
     }
 }

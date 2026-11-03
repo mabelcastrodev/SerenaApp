@@ -17,5 +17,5 @@ val animos = listOf(
     Animo("😣", R.string.animo_estres)
 )
 
-// Evita que la app se caiga si llega un numero fuera de la lista
+
 fun animoDe(posicion: Int): Animo = animos.getOrElse(posicion) { animos[2] }

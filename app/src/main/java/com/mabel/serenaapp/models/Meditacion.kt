@@ -1,9 +1,5 @@
 package com.mabel.serenaapp.models
 
-/*
- * Una fila de la tabla "meditaciones" (con el nombre de su
- * categoria gracias al INNER JOIN de meditaciones.php).
- */
 data class Meditacion(
     val idmeditacion: Int = 0,
     val idcategoria: Int = 0,
